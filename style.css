@@ -1,3 +1,38 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: midnightblue;
+}
 
+.quiz-container {
+  margin: 100px auto;
+}
+
+.data {
+  background-color: blanchedalmond;
+  padding: 2rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.demographic-data,
+.economic-data,
+.geographic-data {
+  display: flex;
+  flex-direction: column;
+}
+.demographic-data h2,
+.economic-data h2,
+.geographic-data h2 {
+  margin: 1rem 0;
+  padding: 0;
+  font-size: 32px;
+}
+.demographic-data__content,
+.economic-data__content,
+.geographic-data__content {
+  margin-left: 1rem;
+  line-height: 2;
+}
 
 /*# sourceMappingURL=style.css.map */

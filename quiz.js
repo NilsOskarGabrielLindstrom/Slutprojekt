@@ -9,7 +9,12 @@ const generateCountryData = () => {
     const sexRatioElement = document.querySelector('.sex-ratio__example')
     const gdpElement = document.querySelector('.gdp__example')
     const gdpPcElement = document.querySelector('.gdp-capita__example')
+    const povertyElement = document.querySelector('.poverty__example')
+    const giniElement = document.querySelector('.gini__example')
     const regionElement = document.querySelector('.region__example')
+    const densityElement = document.querySelector('.density__example')
+    const urbanElement = document.querySelector('.urban__example')
+    const cityElement = document.querySelector('.city__example')
 
     // Get API
     const URL_pop = 'https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?format=json&mrnev=1&per_page=1500'
@@ -18,7 +23,12 @@ const generateCountryData = () => {
     const URL_sexR = 'https://api.worldbank.org/v2/country/all/indicators/SP.POP.TOTL.FE.ZS/?format=json&mrnev=1&per_page=1500'
     const URL_gdp = 'https://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.CD?format=json&mrnev=1&per_page=1500'
     const URL_gdpPc = 'https://api.worldbank.org/v2/country/all/indicators/NY.GDP.PCAP.CD/?format=json&mrnev=1&per_page=1500'
+    const URL_poverty = 'https://api.worldbank.org/v2/country/all/indicators/SI.DST.50MD?format=json&mrnev=1&per_page=1500'
+    const URL_gini = 'https://api.worldbank.org/v2/country/all/indicators/SI.POV.GINI?format=json&mrnev=1&per_page=1500'
     const URL_region = 'https://api.worldbank.org/v2/country/all?format=json&mrnev=1&per_page=1500'
+    const URL_density = 'https://api.worldbank.org/v2/country/all/indicators/EN.POP.DNST?format=json&mrnev=1&per_page=1500'
+    const URL_urban = 'https://api.worldbank.org/v2/country/all/indicators/SP.URB.TOTL.IN.ZS?format=json&mrnev=1&per_page=1500'
+    const URL_city = 'https://api.worldbank.org/v2/country/all/indicators/EN.URB.LCTY?format=json&mrnev=1&per_page=1500'
 
     // List of invalid country codes
     const invalidCountryCodes = [ 
@@ -65,7 +75,7 @@ const generateCountryData = () => {
 
         // Find sex ratio for the selected country
         const sexRatioData = dataSexR[1].find(entry => entry.country.id === countryId);
-        const sexRatio = ((100-sexRatioData.value)/sexRatioData.value)
+        const sexRatio = (100*(100-sexRatioData.value)/sexRatioData.value)
         console.log(sexRatioData)
         console.log(sexRatio)
 
@@ -85,6 +95,22 @@ const generateCountryData = () => {
         const gdpPcData = dataGdpPc[1].find(entry => entry.country.id === countryId);
         console.log(gdpPcData)
 
+        // Fetch data for relative poverty
+        const responsePoverty = await fetch(URL_poverty);
+        const dataPoverty = await responsePoverty.json();
+
+        // Find relative poverty for the selected country
+        const povertyData = dataPoverty[1].find(entry => entry.country.id === countryId);
+        console.log(povertyData)
+
+        // Fetch data for gini
+        const responseGini = await fetch(URL_gini);
+        const dataGini = await responseGini.json();
+
+        // Find gini for the selected country
+        const giniData = dataGini[1].find(entry => entry.country.id === countryId);
+        console.log(giniData)
+
         // Fetch data for region
         const responseRegion = await fetch(URL_region);
         const dataRegion = await responseRegion.json();
@@ -94,14 +120,43 @@ const generateCountryData = () => {
         const regionValue = regionData.region.value
         console.log(regionData)
 
+        // Fetch data for population density
+        const responseDensity = await fetch(URL_density);
+        const dataDensity = await responseDensity.json();
+
+        // Find pop density for the selected country
+        const densityData = dataDensity[1].find(entry => entry.country.id === countryId);
+        console.log(densityData)
+
+        // Fetch data for urban population
+        const responseUrban = await fetch(URL_urban);
+        const dataUrban = await responseUrban.json();
+
+        // Find urban population for the selected country
+        const urbanData = dataUrban[1].find(entry => entry.country.id === countryId);
+        console.log(urbanData)
+
+        // Fetch data for largest city
+        const responseCity = await fetch(URL_city);
+        const dataCity = await responseCity.json();
+
+        // Find largest city for the selected country
+        const cityData = dataCity[1].find(entry => entry.country.id === countryId);
+        console.log(cityData)
+
         // Display data
-        populationElement.innerText = randomCountry.value
+        populationElement.innerText = Number(randomCountry.value.toPrecision(3)/1000000)
         fertilityElement.innerText = fertilityData.value
-        mortalityElement.innerText = mortalityData.value
-        sexRatioElement.innerText = sexRatio
-        gdpElement.innerText = Math.trunc(gdpData.value)
-        gdpPcElement.innerText = Math.trunc(gdpPcData.value)
+        mortalityElement.innerText = Math.trunc(mortalityData.value)
+        sexRatioElement.innerText = Number(sexRatio.toFixed(1))
+        gdpElement.innerText = Math.trunc(gdpData.value/1000000)
+        gdpPcElement.innerText = Number(gdpPcData.value.toPrecision(3)/1000)
+        povertyElement.innerText = Number(povertyData.value.toPrecision(3))
+        giniElement.innerText = Number(giniData.value.toPrecision(3))
         regionElement.innerText = regionValue
+        densityElement.innerText = Number(densityData.value.toPrecision(3))
+        urbanElement.innerText = Number(urbanData.value.toPrecision(3))
+        cityElement.innerText = Number(cityData.value.toPrecision(3)/1000000)
 
         // Add event listener for guesses.
         const submitButton = document.querySelector('.submit')
@@ -136,13 +191,16 @@ const guessCountry = (countryName) => {
     // Check whether the guess is correct
     if (userInput.toLowerCase() === countryName.toLowerCase()) {
         console.log("Correct!");
-        generateCountryData()
     } else {
         console.log("Incorrect!");
     }
 
-        // Clear input field
-        inputField.value = ''
+    // Clear input field
+    inputField.value = ''
+}
+
+const  nextCountry = () => {
+    
 }
 
 generateCountryData()
