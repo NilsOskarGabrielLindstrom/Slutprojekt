@@ -1,6 +1,6 @@
 @use '../utilities/_custom.properties';
 
-html, body {
+html, body, input, button {
     font-family:  var(--font-sans);
     font-size:  var(--font-size);
 }

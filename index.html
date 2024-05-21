@@ -8,30 +8,53 @@
     <script src="quiz.js" defer></script>
 </head>
 <body>
+    <header class="header">
+        <a href="" class="logo">Guess the Country!</a>
+        <nav class="menu">
+            <ul class="menu__list">
+                <li class="menu__item"><a href="" class="menu__link">New game</a></li>
+                <li class="menu__item"><a href="" class="menu__link">About</a></li>
+                <li class="menu__item"><a href="" class="menu__link">Help</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="quiz-container">
         <div class="data">
             <div class="demographic-data">
                 <h2 class="demographic-data__title">Demography</h2>
                 <div class="demographic-data__content">
                     <div class="pop">
-                        <span class="pop__description">Population: </span>
+                        <span class="pop__description description">Population: </span>
                         <span class="pop__example"></span>
-                        <span> million inhabitants.</span>
                     </div>
                     <div class="tfr">
-                        <span class="tfr__description">Total fertility rate: </span>
+                        <span class="tfr__description description">Total fertility rate: </span>
                         <span class="tfr__example"></span>
-                        <span> children per woman.</span>
                     </div>
                     <div class="life-expectancy">
-                        <span class="life-expectancy__description">Life expectancy (at birth): </span>
+                        <span class="life-expectancy__description description">Life expectancy: </span>
                         <span class="life-expectancy__example"></span>
-                        <span> years.</span>
                     </div>
                     <div class="sex-ratio">
-                        <span class="sex-ratio__description">Sex ratio: </span>
+                        <span class="sex-ratio__description description">Sex ratio: </span>
                         <span class="sex-ratio__example"></span>
-                        <span> men per 100 women.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="geographic-data">
+                <h2 class="geographic-data__title">Geography</h2>
+                <div class="geographic-data__content">
+                    <div class="density">
+                        <span class="density__description description">Density: </span>
+                        <span class="density__example"></span>
+                    </div>
+                    <div class="urban">
+                        <span class="urban__description description">Urban population: </span>
+                        <span class="urban__example"></span>
+                    </div>
+                    <div class="city">
+                        <span class="city__description description">Largest city: </span>
+                        <span class="city__example"></span>
                     </div>
                 </div>
             </div>
@@ -39,56 +62,47 @@
                 <h2 class="economic-data__title">Economy</h2>
                 <div class="economic-data__content">
                     <div class="gdp">
-                        <span class="gdp__description">GDP: </span>
+                        <span class="gdp__description description">GDP: </span>
                         <span class="gdp__example"></span>
-                        <span> million USD.</span>
                     </div>
                     <div class="gdp-capita">
-                        <span class="gdp-capita__description">GDP/capita: </span>
+                        <span class="gdp-capita__description description">GDP/capita: </span>
                         <span class="gdp-capita__example"></span>
-                        <span> thousand USD.</span>
                     </div>
                     <div class="poverty">
-                        <span class="poverty__description">Relative poverty*: </span>
+                        <span class="poverty__description description">Relative poverty rate: </span>
                         <span class="poverty__example"></span>
-                        <span> %.</span>
                     </div>
                     <div class="gini">
-                        <span class="gini__description">Gini-index: </span>
+                        <span class="gini__description description">Gini-index: </span>
                         <span class="gini__example"></span>
                     </div>
                 </div>
             </div>
-        
-            <div class="geographic-data">
-                <h2 class="geographic-data__title">Geography</h2>
-                <div class="geographic-data__content">
-                    <div class="region">
-                        <span class="region__description">Region: </span>
-                        <span class="region__example"></span>
-                    </div>
-                    <div class="density">
-                        <span class="density__description">Density: </span>
-                        <span class="density__example"></span>
-                        <span> people per km<sup>2</sup>.</span>
-                    </div>
-                    <div class="urban">
-                        <span class="urban__description">Urban population: </span>
-                        <span class="urban__example"></span>
-                        <span>% of the population. </span>
-                    </div>
-                    <div class="city">
-                        <span class="city__description">Largest city: </span>
-                        <span class="city__example"></span>
-                        <span>million inhabitants.</span>
-                    </div>
+        </div>
+        <div class="hint">
+            <div class="hint__info">
+                <div class="region">
+                    <span class="region__description">Region: </span>
+                    <span class="region__example"></span>
                 </div>
+                <div class="capital">
+                    <span class="capital__description">Capital: </span>
+                    <span class="capital__example">Revealed after 2 guesses...</span>
+                </div>
+            </div>
+
+            <div class="hint__help">
+                <p class="hint__feedback">Three guesses left...</p>
             </div>
         </div>
 
-        <input type="text" class="guess" placeholder="Guess..." id="guess">
-        <button class="submit">Submit</button>
-    
+        <div class="guess">
+            <input list="country" class="guess__input" id="input" name="country" autocomplete="off" placeholder="Guess the country...">
+            <datalist id="country" class="guess__list"></datalist>
+            <input type="submit" class="guess__submit" value="Submit"></input>
+            <button class="guess__give-up">Give up</button>
+        </div>
     </div>
 
 </body>

@@ -3,7 +3,7 @@
     --font-serif: 'Georgia', serif;
     --font-size: 20px;
 
-    --font-scale: 1.25;
+    --font-scale: 1.333;
 
     --font-size-1: var(--font-size);
     --font-size-2: calc(var(--font-size-1)*var(--font-scale));
@@ -11,7 +11,7 @@
     --font-size-4: calc(var(--font-size-3)*var(--font-scale));
     --font-size-5: calc(var(--font-size-4)*var(--font-scale));
     --font-size-6: calc(var(--font-size-5)*var(--font-scale));
-    --font-size-small: var(--font-size-1)/var(--font-scale);
+    --font-size-small: calc(var(--font-size-1)/var(--font-scale));
 
     --line-height: 1.4;
 
@@ -20,6 +20,8 @@
 
     --color-secondary-light: #2F393C;
     --color-secondary-dark: #202F33;
+    --color-secondary-darker: hsl(193, 23%, 6%);
+
 
     --border-radius: 5px;
 
