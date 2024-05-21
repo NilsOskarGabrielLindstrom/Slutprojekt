@@ -1,0 +1,50 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+}
+
+h1 {
+    font-size: var(--font-size-6);
+}
+
+h2 {
+    font-size: var(--font-size-5);
+
+}
+
+h3 {
+    font-size: var(--font-size-4);
+
+}
+
+h4 {
+    font-size: var(--font-size-3);
+
+}
+
+h5 {
+    font-size: var(--font-size-2);
+
+}
+
+h6 {
+    font-size: var(--font-size-1);
+
+}
+
+a {
+    line-height: var(--line-height);
+}
+
+p {
+    line-height: var(--line-height);
+
+}
+
+blockquote {
+    line-height: var(--line-height);
+
+}
+
+li {
+    line-height: var(--line-height);
+}

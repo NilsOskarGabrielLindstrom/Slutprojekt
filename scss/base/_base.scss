@@ -1,0 +1,6 @@
+@use '../utilities/_custom.properties';
+
+html, body {
+    font-family:  var(--font-sans);
+    font-size:  var(--font-size);
+}

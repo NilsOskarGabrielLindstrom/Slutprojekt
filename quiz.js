@@ -149,14 +149,30 @@ const generateCountryData = () => {
         fertilityElement.innerText = fertilityData.value
         mortalityElement.innerText = Math.trunc(mortalityData.value)
         sexRatioElement.innerText = Number(sexRatio.toFixed(1))
-        gdpElement.innerText = Math.trunc(gdpData.value/1000000)
+        if(gdpData) {
+            gdpElement.innerText = Math.trunc(gdpData.value/1000000)
+        } else {
+            gdpElement.innerText = '-'
+        }
         gdpPcElement.innerText = Number(gdpPcData.value.toPrecision(3)/1000)
-        povertyElement.innerText = Number(povertyData.value.toPrecision(3))
-        giniElement.innerText = Number(giniData.value.toPrecision(3))
+        if(povertyData) {
+            povertyElement.innerText = Number(povertyData.value.toPrecision(3))
+        } else {
+            povertyElement.innerText = '-'
+        }
+        if (giniData) {
+            giniElement.innerText = Number(giniData.value.toPrecision(3))
+        } else {
+            giniElement.innerText = '-'
+        }
         regionElement.innerText = regionValue
         densityElement.innerText = Number(densityData.value.toPrecision(3))
         urbanElement.innerText = Number(urbanData.value.toPrecision(3))
-        cityElement.innerText = Number(cityData.value.toPrecision(3)/1000000)
+        if (cityData) {
+            cityElement.innerText = Number((cityData.value/1000000).toPrecision(3))
+        } else {
+            cityElement.innerText = '-'
+        }
 
         // Add event listener for guesses.
         const submitButton = document.querySelector('.submit')
