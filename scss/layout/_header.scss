@@ -1,4 +1,5 @@
 .header {
+    z-index: 999;
     height: 100px;
     position: fixed;
     top: 0;
@@ -38,9 +39,55 @@
     &__link {
         text-decoration: none;
         color: var(--color-primary-dark);
+        cursor: pointer;
 
         &:hover {
             color: var(--color-primary-light)
         }
     }
+
+    &--hidden {
+        display: none;
+    }
+}
+
+.close-button {
+    display: none;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    position: relative;
+
+
+    &:before,
+    &:after {
+        position: absolute;
+        left: 1rem;
+        content: ' ';
+        height: 40px;
+        width: 2px;
+        background-color: var(--color-primary-dark);
+
+    }
+
+    &:hover:before,
+    &:hover:after {
+        background-color: var(--color-primary-light);
+    }
+
+    &:before {
+        transform: rotate(45deg);
+
+    }
+
+    &:after {
+        transform: rotate(-45deg);
+    }
+
+    &--active {
+        display:block;
+
+    }
+
+    
 }

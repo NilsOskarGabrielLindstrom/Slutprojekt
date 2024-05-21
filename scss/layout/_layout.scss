@@ -2,6 +2,52 @@ body {
     background-color: var(--color-secondary-darker);
 }
 
+.help {
+    padding: 0 8rem;
+    position: fixed;
+    top: 100px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: var(--color-secondary-darker);
+    overflow-y: scroll;
+
+    &--hidden {
+        display: none; 
+    }
+
+    &__general {
+        padding: 48px 0 2rem 0;
+        border-bottom: 1px solid var(--color-primary-dark);
+
+        p {
+            color: var(--color-primary-dark);
+            font-size: var(--font-size-small);
+            margin: 1rem 0 0 0;
+            line-height: var(--line-height)    
+        }
+
+    }
+
+    &__list {
+        margin: 2rem 0 80px 0;
+        color: var(--color-primary-dark);
+        list-style: none;
+    }
+
+    &__item {
+        font-size: var(--font-size-small);
+        margin-top: 1rem;
+        font-weight: 600;
+    }
+
+    &__explanation {
+        font-size: var(--font-size-small);
+        margin-top: 0.5rem;
+        line-height: var(--line-height)
+    }
+}
+
 .quiz-container {
     display: grid;
     grid-template-columns: var(--grid-container);

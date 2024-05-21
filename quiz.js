@@ -22,6 +22,7 @@ const generateCountryData = () => {
     const capitalElement = document.querySelector('.capital__example')
     const resetButton = document.querySelector('.guess__reset')
     const giveUpButton = document.querySelector('.guess__give-up')
+    const submitButton = document.querySelector('.guess__submit')
 
 
     // Get API
@@ -225,7 +226,6 @@ const generateCountryData = () => {
         })
 
         // Add event listener for submit button.
-        const submitButton = document.querySelector('.guess__submit')
         submitButton.addEventListener('click', () => {
             guessCountry(countryName, regionData)
         })
@@ -233,7 +233,7 @@ const generateCountryData = () => {
         // Add event listener for "Enter" key
         inputField.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
-                guessCountry(countryName, regionData, inputField, submitButton);
+                guessCountry(countryName, regionData);
             }
         })
 
@@ -254,7 +254,7 @@ const generateCountryData = () => {
 
     getCountryData()
 
-    const guessCountry = (countryName, regionData, inputField, submitButton) => {
+    const guessCountry = (countryName, regionData) => {
 
         // Retrieve data from the input field
         const userInput = inputField.value

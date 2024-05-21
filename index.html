@@ -6,18 +6,46 @@
     <title>Which country?</title>
     <link rel="stylesheet" href="style.css">
     <script src="quiz.js" defer></script>
+    <script src="help.js" defer></script>
 </head>
 <body>
     <header class="header">
         <a href="" class="logo">Guess the Country!</a>
         <nav class="menu">
+            <div class="close-button"></div>
             <ul class="menu__list">
                 <li class="menu__item"><a href="" class="menu__link">New game</a></li>
                 <li class="menu__item"><a href="" class="menu__link">About</a></li>
-                <li class="menu__item"><a href="" class="menu__link">Help</a></li>
+                <li class="menu__item"><a class="menu__link help-link">Help</a></li>
             </ul>
         </nav>
     </header>
+    <div class="help help--hidden">
+        <div class="help__general">
+            <p>Do you find the game challenging? Excellent! It's intentionally designed to be difficult, aiming to inspire reflection on the utility of various summary measures for understanding the diverse living conditions across the globe. This challenge is not just about guessing, but about engaging with the data that paints a picture of each country's unique circumstances.</p>
+            <p>After two incorrect guesses, you'll receive a hint to help you along. Additionally, if you're unsure about any of the indicators listed, brief summaries are provided below for your convenience. Dive in, test your knowledge, and learn more about the world's countries through their key statistics.</p>
+        </div>
+        <div class="help__descriptions">
+            <dl class="help__list">
+                <dt class="help__item">Total fertility rate</dt>
+                <dd class="help__explanation">The average number of children a woman would have if she experienced current age-specific fertility rates throughout her reproductive life. The replacement level is approximately 2.1 children per woman, which in the long run is needed to sustain the population size. </dd>
+                <dt class="help__item">Life expectancy</dt>
+                <dd class="help__explanation">The average number of years a newborn is expected to live, assuming current mortality rates remain constant throughout their life. </dd>
+                <dt class="help__item">Sex ratio</dt>
+                <dd class="help__explanation">The number of males for every 100 females in a population – most notably differs across populations due to gender differences in mortality and migration. </dd>
+                <dt class="help__item">Density</dt>
+                <dd class="help__explanation">Population density measures how many people live in each square kilometer of a given area, indicating the concentration of human settlement. </dd>
+                <dt class="help__item">GDP (Gross Domestic Product)</dt>
+                <dd class="help__explanation">The total value of goods and services produced within a country's borders on a yearly basis. </dd>
+                <dt class="help__item">GDP per capita</dt>
+                <dd class="help__explanation">The GDP of a country divided by its population, representing the average income or economic output per person. </dd>
+                <dt class="help__item">Relative poverty rate</dt>
+                <dd class="help__explanation">The percentage of the population earning less than 50% of the median income. </dd>
+                <dt class="help__item">Gini-index</dt>
+                <dd class="help__explanation">The Gini index measures income inequality within a population, ranging from 0 (perfect equality) to 100 (perfect inequality).</dd>
+            </dl>
+        </div>
+    </div>
     <div class="quiz-container">
         <div class="data">
             <div class="demographic-data">
@@ -88,7 +116,7 @@
                 </div>
                 <div class="capital">
                     <span class="capital__description">Capital: </span>
-                    <span class="capital__example">Revealed after 2 guesses...</span>
+                    <span class="capital__example">...</span>
                 </div>
             </div>
 
