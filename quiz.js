@@ -19,6 +19,9 @@ const generateCountryData = () => {
     const feedback = document.querySelector('.hint__feedback')
     const inputField = document.getElementById('input')
     const dataList = document.getElementById('country')
+    const capitalElement = document.querySelector('.capital__example')
+    const resetButton = document.querySelector('.guess__reset')
+    const giveUpButton = document.querySelector('.guess__give-up')
 
 
     // Get API
@@ -214,14 +217,14 @@ const generateCountryData = () => {
             cityElement.innerText = `${Number((cityData.value).toPrecision(3))} inhabitants. `
         } 
 
-        // Add list for guesses
+        // Add list for possible guesses
         countryList.forEach(countryName => {
             const option = document.createElement('option')
             option.value = countryName
             dataList.appendChild(option)
         })
 
-        // Add event listener for guesses.
+        // Add event listener for submit button.
         const submitButton = document.querySelector('.guess__submit')
         submitButton.addEventListener('click', () => {
             guessCountry(countryName, regionData)
@@ -230,60 +233,59 @@ const generateCountryData = () => {
         // Add event listener for "Enter" key
         inputField.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
-                event.preventDefault(); // Prevent form submission
-                guessCountry(inputField.value.trim());
+                guessCountry(countryName, regionData, inputField, submitButton);
             }
-        });
+        })
 
         // Add surrender-functionality
-        const giveUpButton = document.querySelector('.guess__give-up')
         giveUpButton.addEventListener('click', () => {
             feedback.innerText = `The correct answer was ${countryName}.`
             inputField.disabled = true // Disable input field
             submitButton.disabled = true // Disable submit button
-    
+            resetButton.classList.remove('hidden')
+            giveUpButton.classList.add('hidden')
         })
+
+        // Add functionality for reset-button.
+        resetButton.addEventListener('click', () => {location.reload()})
 
 
     }
 
     getCountryData()
 
-}
+    const guessCountry = (countryName, regionData, inputField, submitButton) => {
 
-const guessCountry = (countryName, regionData) => {
-    const inputField = document.getElementById('input')
-    const feedback = document.querySelector('.hint__feedback')
-    const capitalElement = document.querySelector('.capital__example')
-
-    // Retrieve data from the input field
-    const userInput = inputField.value
-
-    // Check if all guesses have been used
-    if (guessCount >= 3) {
-        inputField.disabled = true // Disable input field
-        submitButton.disabled = true // Disable submit button
-        return
+        // Retrieve data from the input field
+        const userInput = inputField.value
+    
+        // Increase guess count
+        guessCount++
+    
+        // Check whether the guess is correct and provide feedback/hint.
+        if (userInput.toLowerCase() === countryName.toLowerCase()) {
+            feedback.innerText = 'Correct!'
+            inputField.disabled = true
+            submitButton.disabled = true
+            resetButton.classList.remove('hidden')
+            giveUpButton.classList.add('hidden')
+        } else if (guessCount===1) {
+            feedback.innerText = 'Incorrect! Two guesses left.'
+        } else if (guessCount===2) {
+            feedback.innerText = `Incorrect! Only one guess left. The capital of this country is ${regionData.capitalCity}`
+            capitalElement.innerText = regionData.capitalCity
+        } else if (guessCount===3) {
+            feedback.innerText = `Incorrect! The correct answer was ${countryName}.`
+            resetButton.classList.remove('hidden')
+            giveUpButton.classList.add('hidden')
+            inputField.disabled = true
+            submitButton.disabled = true
+        }
+    
+        // Clear input field
+        inputField.value = ''
+    
     }
-
-    // Increment guess count
-    guessCount++
-
-    // Check whether the guess is correct
-    if (userInput.toLowerCase() === countryName.toLowerCase()) {
-        feedback.innerText = 'Correct!'
-    } else if (guessCount===1) {
-        feedback.innerText = 'Incorrect! Two guesses left.'
-    } else if (guessCount===2) {
-        feedback.innerText = `Incorrect! Only one guess left. The capital of this country is ${regionData.capitalCity}`
-        capitalElement.innerText = regionData.capitalCity
-
-    } else if (guessCount===3) {
-        feedback.innerText = `Incorrect! The correct answer was ${countryName}.`
-    }
-
-    // Clear input field
-    inputField.value = ''
 
 }
 

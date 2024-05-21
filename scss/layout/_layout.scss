@@ -119,7 +119,8 @@ body {
 
 
     &__submit,
-    &__give-up {
+    &__give-up,
+    &__reset {
         white-space: nowrap;
         max-width: 100%;
         font-size: var(--font-size-2);
@@ -130,6 +131,10 @@ body {
         padding: 1rem;
         border-radius: 16px;
         cursor: pointer;
+
+        &.hidden {
+            display: none;
+        }
 
     }
 

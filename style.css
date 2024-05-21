@@ -203,7 +203,7 @@ body {
   color: var(--color-secondary-dark);
   opacity: 1;
 }
-.guess__submit, .guess__give-up {
+.guess__submit, .guess__give-up, .guess__reset {
   white-space: nowrap;
   max-width: 100%;
   font-size: var(--font-size-2);
@@ -215,6 +215,9 @@ body {
   border-radius: 16px;
   cursor: pointer;
 }
+.guess__submit.hidden, .guess__give-up.hidden, .guess__reset.hidden {
+  display: none;
+}
 
 .header {
   height: 100px;
@@ -225,6 +228,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid var(--color-primary-dark);
+  background-color: var(--color-secondary-darker);
 }
 
 .logo {
@@ -232,10 +237,11 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-size: var(--font-size-2);
-  font-family: "Courier New", Courier, monospace;
-  color: var(--color-primary-dark);
+  font-size: var(--font-size-3);
+  color: var(--color-primary-light);
   text-decoration: none;
+  font-style: italic;
+  font-weight: 600;
 }
 
 .menu {
@@ -251,6 +257,9 @@ body {
 .menu__link {
   text-decoration: none;
   color: var(--color-primary-dark);
+}
+.menu__link:hover {
+  color: var(--color-primary-light);
 }
 
 /*# sourceMappingURL=style.css.map */
