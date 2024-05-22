@@ -150,12 +150,14 @@ const generateCountryData = () => {
             populationElement.innerText = `${Number(randomCountry.value.toPrecision(3))} inhabitants.`
         }
         
-        if(fertilityData) {
-            fertilityElement.innerText = `${Number(fertilityData.value.toFixed(2))} children per woman.`
-        } else {
+        if(!fertilityData) {
             fertilityElement.innerText = '-'
-        }
-        
+        } else if (fertilityData.value.toFixed(2) == 1) {
+            fertilityElement.innerText = `${Number(fertilityData.value.toFixed(2))} child per woman.`
+        } else {
+            fertilityElement.innerText = `${Number(fertilityData.value.toFixed(2))} children per woman.`
+        } 
+
         if(mortalityData) {
             mortalityElement.innerText = `${Number(mortalityData.value.toFixed(1))} years.`
         } else {

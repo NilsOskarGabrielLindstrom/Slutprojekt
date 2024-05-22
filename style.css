@@ -99,6 +99,48 @@ body {
   background-color: var(--color-secondary-darker);
 }
 
+.fade-in {
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: var(--color-secondary-darker);
+  overflow-y: scroll;
+  z-index: 100;
+  transition: opacity 0.5s 0.5s;
+  pointer-events: none;
+}
+
+.about {
+  padding: 0 8rem;
+  position: fixed;
+  top: 100px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: var(--color-secondary-darker);
+  overflow-y: scroll;
+}
+.about--hidden {
+  display: none;
+}
+.about__content {
+  padding: 48px 0 2rem 0;
+  border-bottom: 1px solid var(--color-primary-dark);
+}
+.about__content p {
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-small);
+  margin: 1rem 0 0 0;
+  line-height: var(--line-height);
+}
+.about__content a {
+  text-decoration: none;
+  color: var(--color-primary-light);
+}
+
 .help {
   padding: 0 8rem;
   position: fixed;
@@ -204,19 +246,21 @@ body {
 .hint__help {
   max-width: 400px;
   width: 100%;
-  background-color: var(--color-primary-dark);
+  background-color: var(--color-secondary-darker);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 1rem;
   border-radius: 16px;
+  border: 1px solid var(--color-primary-light);
+  font-style: italic;
 }
 .hint__feedback {
   font-size: var(--font-size-1);
   margin: 0;
   padding: 0;
-  color: var(--color-secondary-darker);
+  color: var(--color-prrimary-dark);
 }
 
 .guess {
@@ -241,6 +285,9 @@ body {
 .guess__input::placeholder {
   color: var(--color-secondary-dark);
   opacity: 1;
+}
+.guess__input option {
+  background-color: red;
 }
 .guess__submit, .guess__give-up, .guess__reset {
   white-space: nowrap;

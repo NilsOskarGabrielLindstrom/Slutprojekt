@@ -6,16 +6,18 @@
     <title>Which country?</title>
     <link rel="stylesheet" href="style.css">
     <script src="quiz.js" defer></script>
-    <script src="help.js" defer></script>
+    <script src="menu.js" defer></script>
+    <script src="loadPage.js" defer></script>
 </head>
 <body>
+    <div class="fade-in"></div>
     <header class="header">
         <a href="" class="logo">Guess the Country!</a>
         <nav class="menu">
             <div class="close-button"></div>
             <ul class="menu__list">
                 <li class="menu__item"><a href="" class="menu__link">New game</a></li>
-                <li class="menu__item"><a href="" class="menu__link">About</a></li>
+                <li class="menu__item"><a class="menu__link about-link">About</a></li>
                 <li class="menu__item"><a class="menu__link help-link">Help</a></li>
             </ul>
         </nav>
@@ -46,10 +48,19 @@
             </dl>
         </div>
     </div>
+    <div class="about about--hidden">
+        <div class="about__content">
+            <p>Welcome to our interactive country guessing game! This educational tool challenges you to guess the country based on various demographic, economic, and social indicators, making learning about different nations both fun and engaging.</p>
+            <p>The data used in this game is sourced from the World Bank's extensive databank, ensuring accuracy and up-to-date information. The game includes data for over 200 countries, reflecting the most recent estimates available from the World Bank, which is continuously updated to provide the latest statistics.</p>
+            <p>By playing this game, you will test your knowledge and gain insights into the socio-economic conditions of different countries. Each hint is based on real data, helping you make informed guesses and learn in the process.</p>
+            <p>We hope you enjoy the game and find it both fun and educational. For more detailed information and to explore the full range of data provided by the World Bank, please visit <a href="https://data.worldbank.org/">the World Bank's databank</a>.</p>
+            
+        </div>
+    </div>
     <div class="quiz-container">
         <div class="data">
             <div class="demographic-data">
-                <h2 class="demographic-data__title">Demography</h2>
+                <h2 class="demographic-data__title">Population Portrait</h2>
                 <div class="demographic-data__content">
                     <div class="pop">
                         <span class="pop__description description">Population: </span>
@@ -70,7 +81,7 @@
                 </div>
             </div>
             <div class="geographic-data">
-                <h2 class="geographic-data__title">Geography</h2>
+                <h2 class="geographic-data__title">Urban Overview</h2>
                 <div class="geographic-data__content">
                     <div class="density">
                         <span class="density__description description">Density: </span>
@@ -87,7 +98,7 @@
                 </div>
             </div>
             <div class="economic-data">
-                <h2 class="economic-data__title">Economy</h2>
+                <h2 class="economic-data__title">Economic Profile</h2>
                 <div class="economic-data__content">
                     <div class="gdp">
                         <span class="gdp__description description">GDP: </span>
@@ -126,7 +137,7 @@
         </div>
 
         <div class="guess">
-            <input list="country" class="guess__input" id="input" name="country" autocomplete="off" placeholder="Guess the country...">
+            <input type="text" list="country" class="guess__input" id="input" name="country" autocomplete="off" placeholder="Guess the country...">
             <datalist id="country" class="guess__list"></datalist>
             <input type="submit" class="guess__submit" value="Submit"></input>
             <button class="guess__give-up">Give up</button>
