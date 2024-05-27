@@ -55,13 +55,13 @@ const generateCountryData = () => {
         countryList = validCountries.map(country => country.country.value)
 
         // Pick country at random
-        // const randomIndex = Math.floor(Math.random() * validCountries.length)
-        // const randomCountry = validCountries[randomIndex]
-        // const countryId = randomCountry.country.id
+        const randomIndex = Math.floor(Math.random() * validCountries.length)
+        const randomCountry = validCountries[randomIndex]
+        const countryId = randomCountry.country.id
 
         // Explore specific countries
-        const countryId = 'VG'
-        const randomCountry = dataPop[1].find(entry => entry.country.id === countryId)
+        // const countryId = 'VG'
+        // const randomCountry = dataPop[1].find(entry => entry.country.id === countryId)
 
         // Variable with name of selected country.
         const countryName = randomCountry.country.value
