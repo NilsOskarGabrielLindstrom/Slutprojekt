@@ -13,6 +13,7 @@
   --line-height: 1.4;
   --color-primary-light: #4FC9E6;
   --color-primary-dark: #5FA9BB;
+  --color-primary-darker: rgba(94 168 186 / 50%);
   --color-secondary-light: #2F393C;
   --color-secondary-dark: #202F33;
   --color-secondary-darker: hsl(193, 23%, 6%);
@@ -189,15 +190,20 @@ body {
 .data {
   display: flex;
   justify-content: space-between;
+  align-items: start;
   flex-wrap: wrap;
   grid-column: inner;
+  margin-bottom: 1.25rem;
 }
 
 .demographic-data,
 .economic-data,
 .geographic-data {
+  display: flex;
+  flex-direction: column;
   max-width: 400px;
   width: 100%;
+  height: 330px;
 }
 .demographic-data__title,
 .economic-data__title,
@@ -205,7 +211,7 @@ body {
   color: var(--color-primary-light);
   font-size: var(--font-size-3);
   font-weight: 400;
-  margin-top: 1.55rem;
+  margin: 3rem 0 1.5rem 0;
 }
 .demographic-data__content,
 .economic-data__content,
@@ -213,8 +219,16 @@ body {
   color: var(--color-primary-dark);
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  line-height: 1.4;
   gap: 1rem;
-  line-height: 1.6;
+  margin: 0;
+}
+.demographic-data__content sup,
+.economic-data__content sup,
+.geographic-data__content sup {
+  font-size: 10px;
+  vertical-align: top;
 }
 .demographic-data .description,
 .economic-data .description,
@@ -225,33 +239,34 @@ body {
 .hint {
   grid-column: inner;
   color: var(--color-primary-dark);
-  font-size: var(--font-size-2);
-  margin-top: 2.5rem;
+  font-size: var(--font-size-1);
+  padding-top: 1.25rem;
   gap: 2.5rem;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   flex-wrap: wrap;
+  border-top: 1px dashed var(--color-primary-darker);
 }
 .hint .region,
 .hint .capital {
-  margin-top: 1rem;
+  margin-bottom: 1rem;
   max-width: 800px;
   width: 100%;
+  line-height: 1.6;
 }
 .hint .region__description,
 .hint .capital__description {
   font-weight: 600;
 }
 .hint__help {
-  max-width: 400px;
-  width: 100%;
+  height: 84px;
   background-color: var(--color-secondary-darker);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 1rem 3rem;
   border-radius: 16px;
   border: 1px solid var(--color-primary-light);
   font-style: italic;
@@ -265,26 +280,27 @@ body {
 
 .guess {
   grid-column: inner;
-  margin-top: 5rem;
+  margin: 0.25rem;
+  padding-top: 1.25rem;
   display: flex;
   align-items: center;
   gap: 2rem;
   justify-content: space-between;
   width: 100%;
+  border-top: 1px dashed var(--color-primary-darker);
 }
 .guess__input {
   width: 100%;
   font-size: var(--font-size-2);
-  background-color: var(--color-primary-dark);
-  color: var(--color-secondary-darker);
-  border: none;
+  background-color: var(--color-secondary-dark);
+  color: var(--color-primary-dark);
+  border: 1px solid var(--color-primary-light);
   text-align: center;
   padding: 1rem;
   border-radius: 16px;
 }
 .guess__input::placeholder {
-  color: var(--color-secondary-dark);
-  opacity: 1;
+  color: var(--color-primary-darker);
 }
 .guess__input option {
   background-color: red;
@@ -303,6 +319,7 @@ body {
 }
 .guess__submit.hidden, .guess__give-up.hidden, .guess__reset.hidden {
   display: none;
+  cursor: none;
 }
 
 .header {

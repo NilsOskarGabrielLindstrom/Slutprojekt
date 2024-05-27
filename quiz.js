@@ -55,9 +55,13 @@ const generateCountryData = () => {
         countryList = validCountries.map(country => country.country.value)
 
         // Pick country at random
-        const randomIndex = Math.floor(Math.random() * validCountries.length)
-        const randomCountry = validCountries[randomIndex]
-        const countryId = randomCountry.country.id
+        // const randomIndex = Math.floor(Math.random() * validCountries.length)
+        // const randomCountry = validCountries[randomIndex]
+        // const countryId = randomCountry.country.id
+
+        // Explore specific countries
+        const countryId = 'VG'
+        const randomCountry = dataPop[1].find(entry => entry.country.id === countryId)
 
         // Variable with name of selected country.
         const countryName = randomCountry.country.value
@@ -67,6 +71,7 @@ const generateCountryData = () => {
         const dataTfr = await responseTfr.json()
 
         // Find fertility rate for the selected country
+        console.log(dataTfr)
         const fertilityData = dataTfr[1].find(entry => entry.country.id === countryId)
 
         // Fetch data for life expectancy
@@ -152,8 +157,8 @@ const generateCountryData = () => {
         
         if(!fertilityData) {
             fertilityElement.innerText = '-'
-        } else if (fertilityData.value.toFixed(2) == 1) {
-            fertilityElement.innerText = `${Number(fertilityData.value.toFixed(2))} child per woman.`
+        } else if (fertilityData.value.toFixed(2) == 1.00) {
+            fertilityElement.innerText = `1 child per woman.`
         } else {
             fertilityElement.innerText = `${Number(fertilityData.value.toFixed(2))} children per woman.`
         } 
@@ -210,6 +215,8 @@ const generateCountryData = () => {
         
         if(urbanData) {
             urbanElement.innerText = `${Number(urbanData.value.toPrecision(3))}% of the population. `
+        } else {
+            urbanElement.innerText = '-'
         }
         
         if (!cityData) {
@@ -232,7 +239,7 @@ const generateCountryData = () => {
             guessCountry(countryName, regionData)
         })
 
-        // Add event listener for "Enter" key
+        // Add event listener for enter key
         inputField.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
                 guessCountry(countryName, regionData);
@@ -274,8 +281,19 @@ const generateCountryData = () => {
         } else if (guessCount===1) {
             feedback.innerText = 'Incorrect! Two guesses left.'
         } else if (guessCount===2) {
-            feedback.innerText = `Incorrect! Only one guess left. The capital of this country is ${regionData.capitalCity}`
-            capitalElement.innerText = regionData.capitalCity
+            if(regionData.capitalCity) {
+                feedback.innerText = `Incorrect! Only one guess left. The capital of this country is ${regionData.capitalCity}.`
+            } else {
+                feedback.innerText = `Incorrect! Only one guess left.`
+            }
+
+            if (regionData.capitalCity) {
+                capitalElement.innerText = `${regionData.capitalCity}. `
+            } else {
+                capitalElement.innerText = '-'
+            }
+
+
         } else if (guessCount===3) {
             feedback.innerText = `Incorrect! The correct answer was ${countryName}.`
             resetButton.classList.remove('hidden')
